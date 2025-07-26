@@ -1,0 +1,131 @@
+{
+  "test_metadata": {
+    "timestamp": "2025-07-26T22:18:43.623787",
+    "duration_seconds": 0.426,
+    "status": "SUCCESS",
+    "agents_tested": [
+      "SimulationAgent",
+      "OrchestratorAgent",
+      "CommunicationsAgent"
+    ]
+  },
+  "simulation_results": {
+    "timestamp": "2025-07-26T22:18:43.624322",
+    "choke_point_name": null,
+    "congestion_score": 0,
+    "affected_vehicle_ids": [],
+    "all_choke_points": {
+      "Marathahalli Bridge": {
+        "score": 0,
+        "affected_vehicles": 0
+      },
+      "Iblur Junction": {
+        "score": 0,
+        "affected_vehicles": 0
+      },
+      "Silk Board Junction": {
+        "score": 0,
+        "affected_vehicles": 0
+      }
+    },
+    "simulation_metadata": {
+      "total_journeys_analyzed": 0,
+      "prediction_horizon_minutes": 60,
+      "processing_time_ms": 0,
+      "model_version": "1.0",
+      "choke_points_monitored": 3,
+      "error": null
+    }
+  },
+  "orchestration_results": {
+    "timestamp": "2025-07-26T22:18:43.624322",
+    "cycle_id": "cycle_20250726_221843",
+    "status": "completed",
+    "decisions": {
+      "intervention_needed": false,
+      "congestion_score": 0,
+      "threshold_used": 80.0,
+      "affected_choke_point": null,
+      "vehicles_to_reroute": [],
+      "gemini_strategy": {
+        "recommended_strategy": "MONITOR_AND_WAIT",
+        "intervention_type": "monitor",
+        "ai_reasoning": {
+          "recommended_strategy": "MONITOR_AND_WAIT",
+          "confidence_score": 0.75,
+          "reasoning": "Fallback decision based on congestion score 0 and risk level low",
+          "priority_level": "MEDIUM",
+          "estimated_impact": "Rule-based intervention decision",
+          "method": "fallback_logic"
+        },
+        "situation_report": {
+          "timestamp": "2025-07-26T22:18:43.624322",
+          "traffic_analysis": {
+            "primary_choke_point": null,
+            "congestion_score": 0,
+            "affected_vehicle_count": 0,
+            "affected_vehicle_ids": [],
+            "risk_level": "low"
+          },
+          "temporal_context": {
+            "hour_of_day": 22,
+            "day_of_week": "Saturday",
+            "is_peak_hour": false,
+            "is_weekend": true
+          },
+          "system_state": {
+            "total_cycles_completed": 0,
+            "recent_interventions": 0,
+            "system_load": "normal"
+          }
+        }
+      },
+      "reasoning": {
+        "decision_method": "gemini_ai_enhanced",
+        "decision_factors": [
+          "Gemini recommendation: MONITOR_AND_WAIT",
+          "Congestion score: 0",
+          "Risk level: low",
+          "Peak hour: False",
+          "Affected vehicles: 0",
+          "Critical choke point: None"
+        ],
+        "risk_level": "low",
+        "intervention_type": "monitor",
+        "temporal_context": {
+          "hour_of_day": 22,
+          "day_of_week": "Saturday",
+          "is_peak_hour": false,
+          "is_weekend": true
+        }
+      }
+    },
+    "actions_taken": {
+      "interventions": [],
+      "notifications_sent": [],
+      "errors": []
+    },
+    "network_analysis": {
+      "active_vehicles_count": 3,
+      "highest_risk_choke_point": null,
+      "max_congestion_score": 0,
+      "affected_vehicles_count": 0
+    },
+    "performance_metrics": {
+      "cycle_duration_seconds": 0.425,
+      "total_cycles_completed": 1,
+      "total_interventions_executed": 0,
+      "intervention_rate": 0.0
+    }
+  },
+  "communications_results": {
+    "status": "no_intervention_needed",
+    "reason": "Gemini recommended monitoring"
+  },
+  "pipeline_summary": {
+    "congestion_detected": false,
+    "gemini_strategy": "MONITOR_AND_WAIT",
+    "intervention_executed": false,
+    "vehicles_affected": 0
+  }
+}

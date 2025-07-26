@@ -1,0 +1,317 @@
+{
+  "test_start": "2025-07-26T18:19:36.877387+00:00",
+  "agents_tested": [
+    "observer-agent",
+    "simulation-agent",
+    "orchestrator-agent",
+    "communications-agent"
+  ],
+  "a2a_messages_tested": [
+    "health_check",
+    "observer_messaging",
+    "simulation_messaging",
+    "orchestrator_messaging",
+    "communications_messaging"
+  ],
+  "test_scenarios": [
+    {
+      "scenario": "low_traffic",
+      "scenario_id": "6526b72c-128f-4548-b3ad-e0fcb3d30dda",
+      "result": "passed",
+      "orchestration_result": {
+        "cycle_id": "test_cycle_6526b72c-128f-4548-b3ad-e0fcb3d30dda",
+        "perception_data": {
+          "network_state": {
+            "active_vehicles": 0,
+            "congestion_level": "unknown"
+          }
+        },
+        "prediction_data": {
+          "congestion_score": 0,
+          "critical_choke_point": null
+        },
+        "decision_result": {
+          "strategy": "MONITOR_AND_WAIT",
+          "intervention_type": "MONITOR",
+          "intervention_needed": false,
+          "reasoning_source": "fallback_rules",
+          "risk_level": "low",
+          "confidence": 0.5,
+          "situation_report": {
+            "traffic_analysis": {
+              "congestion_score": 0,
+              "critical_choke_point": null,
+              "affected_vehicles": 0,
+              "prediction_confidence": 0.5
+            },
+            "temporal_context": {
+              "current_time": "2025-07-26T18:48:47.449768+00:00",
+              "is_peak_hour": false,
+              "day_of_week": "Sunday"
+            },
+            "system_state": {
+              "available_strategies": [
+                "MONITOR_AND_WAIT",
+                "REROUTE_VEHICLES",
+                "EMERGENCY_INTERVENTION",
+                "COORDINATE_WITH_AUTHORITIES"
+              ],
+              "congestion_threshold": 80.0
+            },
+            "bengaluru_context": {
+              "major_routes": [
+                "ORR",
+                "Hosur Road",
+                "Whitefield Road"
+              ],
+              "critical_junctions": [
+                "Silk Board",
+                "Electronic City",
+                "Whitefield"
+              ]
+            }
+          },
+          "timestamp": "2025-07-26T18:48:47.578260+00:00"
+        },
+        "execution_result": null,
+        "duration_seconds": 580.933572,
+        "timestamp": "2025-07-26T18:48:47.578260+00:00",
+        "status": "completed"
+      }
+    },
+    {
+      "scenario": "high_traffic",
+      "scenario_id": "537dee97-c2f5-40ff-be4f-abddc6eeabb9",
+      "result": "passed",
+      "simulation_response": {
+        "success": true,
+        "correlation_id": "537dee97-c2f5-40ff-be4f-abddc6eeabb9",
+        "gridlock_result": {
+          "congestion_score": 0.1,
+          "critical_choke_point": null,
+          "critical_choke_point_details": null,
+          "affected_vehicles": 10,
+          "prediction_confidence": 1.0,
+          "choke_point_analysis": {
+            "silk_board": {
+              "choke_point_id": "silk_board",
+              "name": "Silk Board Junction",
+              "vehicle_count": 10,
+              "capacity": 2000,
+              "threshold": 1600,
+              "congestion_score": 0.31,
+              "status": "minimal"
+            },
+            "electronic_city": {
+              "choke_point_id": "electronic_city",
+              "name": "Electronic City Toll Plaza",
+              "vehicle_count": 0,
+              "capacity": 1500,
+              "threshold": 1200,
+              "congestion_score": 0.0,
+              "status": "minimal"
+            },
+            "whitefield": {
+              "choke_point_id": "whitefield",
+              "name": "Whitefield Main Road",
+              "vehicle_count": 0,
+              "capacity": 1200,
+              "threshold": 960,
+              "congestion_score": 0.0,
+              "status": "minimal"
+            }
+          },
+          "recommendations": [
+            "LOW: Continue normal monitoring"
+          ],
+          "timestamp": "2025-07-26T18:48:47.578260+00:00",
+          "agent_id": "simulation-agent"
+        },
+        "journeys_count": 10,
+        "timestamp": "2025-07-26T18:48:47.578260+00:00",
+        "agent_id": "simulation-agent"
+      },
+      "orchestration_result": {
+        "cycle_id": "test_cycle_537dee97-c2f5-40ff-be4f-abddc6eeabb9",
+        "perception_data": {
+          "network_state": {
+            "active_vehicles": 0,
+            "congestion_level": "unknown"
+          }
+        },
+        "prediction_data": {
+          "congestion_score": 0,
+          "critical_choke_point": null
+        },
+        "decision_result": {
+          "strategy": "MONITOR_AND_WAIT",
+          "intervention_type": "MONITOR",
+          "intervention_needed": false,
+          "reasoning_source": "fallback_rules",
+          "risk_level": "low",
+          "confidence": 0.5,
+          "situation_report": {
+            "traffic_analysis": {
+              "congestion_score": 0,
+              "critical_choke_point": null,
+              "affected_vehicles": 0,
+              "prediction_confidence": 0.5
+            },
+            "temporal_context": {
+              "current_time": "2025-07-26T18:58:03.947093+00:00",
+              "is_peak_hour": false,
+              "day_of_week": "Sunday"
+            },
+            "system_state": {
+              "available_strategies": [
+                "MONITOR_AND_WAIT",
+                "REROUTE_VEHICLES",
+                "EMERGENCY_INTERVENTION",
+                "COORDINATE_WITH_AUTHORITIES"
+              ],
+              "congestion_threshold": 80.0
+            },
+            "bengaluru_context": {
+              "major_routes": [
+                "ORR",
+                "Hosur Road",
+                "Whitefield Road"
+              ],
+              "critical_junctions": [
+                "Silk Board",
+                "Electronic City",
+                "Whitefield"
+              ]
+            }
+          },
+          "timestamp": "2025-07-26T18:58:04.395813+00:00"
+        },
+        "execution_result": null,
+        "duration_seconds": 556.817553,
+        "timestamp": "2025-07-26T18:58:04.395813+00:00",
+        "status": "completed"
+      }
+    },
+    {
+      "scenario": "emergency_intervention",
+      "scenario_id": "27051f81-1c80-4b45-8a6a-cc8aa0b31ab4",
+      "result": "passed",
+      "intervention_response": {
+        "success": true,
+        "correlation_id": "27051f81-1c80-4b45-8a6a-cc8aa0b31ab4",
+        "intervention_result": {
+          "intervention_id": "3de2c28a-a04c-4884-b944-8cdc8368041b",
+          "type": "EMERGENCY",
+          "alert_result": {
+            "success": true,
+            "broadcast_id": "f58be0c1-d7ef-43b1-b4df-0e0bd13adaba",
+            "alert_type": "EMERGENCY",
+            "message": "EMERGENCY: Severe traffic congestion detected. Avoid affected areas.",
+            "notification_result": {
+              "success": false,
+              "error": "'charmap' codec can't encode character '\\U0001f514' in position 0: character maps to <undefined>",
+              "journey_id": "unknown"
+            }
+          },
+          "authority_notifications": {
+            "success": true,
+            "authorities_notified": 3,
+            "notifications": [
+              {
+                "authority": "Traffic Police",
+                "message": "Traffic intervention required: EMERGENCY_INTERVENTION",
+                "status": "notified",
+                "timestamp": "2025-07-26T18:58:04.397348+00:00"
+              },
+              {
+                "authority": "BMTC",
+                "message": "Traffic intervention required: EMERGENCY_INTERVENTION",
+                "status": "notified",
+                "timestamp": "2025-07-26T18:58:04.397348+00:00"
+              },
+              {
+                "authority": "BBMP Traffic",
+                "message": "Traffic intervention required: EMERGENCY_INTERVENTION",
+                "status": "notified",
+                "timestamp": "2025-07-26T18:58:04.397348+00:00"
+              }
+            ]
+          },
+          "status": "completed",
+          "timestamp": "2025-07-26T18:58:04.397348+00:00"
+        },
+        "intervention_type": "EMERGENCY",
+        "timestamp": "2025-07-26T18:58:04.397348+00:00",
+        "agent_id": "communications-agent"
+      }
+    }
+  ],
+  "performance_metrics": {
+    "test_duration": null,
+    "agents_performance": {
+      "observer": {
+        "status": "active",
+        "metrics": {
+          "messages_sent": 0,
+          "messages_received": 0,
+          "errors": 0,
+          "uptime_start": "2025-07-26T18:19:37.925661+00:00"
+        },
+        "capabilities": [
+          "perception",
+          "traffic_monitoring",
+          "telemetry_ingestion"
+        ]
+      },
+      "simulation": {
+        "status": "active",
+        "metrics": {
+          "messages_sent": 0,
+          "messages_received": 0,
+          "errors": 0,
+          "uptime_start": "2025-07-26T18:24:12.486204+00:00"
+        },
+        "capabilities": [
+          "prediction",
+          "congestion_prediction"
+        ]
+      },
+      "orchestrator": {
+        "status": "active",
+        "metrics": {
+          "messages_sent": 0,
+          "messages_received": 0,
+          "errors": 0,
+          "uptime_start": "2025-07-26T18:24:13.062105+00:00"
+        },
+        "capabilities": [
+          "decision_making",
+          "strategic_planning"
+        ]
+      },
+      "communications": {
+        "status": "active",
+        "metrics": {
+          "messages_sent": 0,
+          "messages_received": 0,
+          "errors": 0,
+          "uptime_start": "2025-07-26T18:24:15.444115+00:00"
+        },
+        "capabilities": [
+          "communication",
+          "notification_delivery"
+        ]
+      }
+    },
+    "a2a_message_latency": [],
+    "memory_usage": "not_measured",
+    "cpu_usage": "not_measured"
+  },
+  "errors": [],
+  "test_end": "2025-07-26T18:58:04.397348+00:00",
+  "test_duration_seconds": 2307.519961,
+  "test_status": "PASSED",
+  "total_agents_tested": 4,
+  "total_scenarios_tested": 3,
+  "total_errors": 0
+}

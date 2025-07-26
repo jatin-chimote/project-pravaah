@@ -1,0 +1,28 @@
+# Project Pravaah - Urban Mobility Operating System
+# Python dependencies for multi-agent system
+
+# Google Cloud & Firebase
+firebase-admin==6.4.0
+google-cloud-firestore==2.13.1
+google-cloud-pubsub==2.18.4
+google-api-core==2.15.0
+google-cloud-aiplatform==1.71.1
+vertexai==1.71.1
+
+# Google Agent Development Kit (ADK)
+google-cloud-adk>=1.0.0
+google-cloud-agent-framework>=1.0.0
+google-cloud-a2a-protocol>=1.0.0
+
+# FastAPI & Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+
+# Utilities
+python-dotenv==1.0.0
+requests==2.31.0
+
+# Development & Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
