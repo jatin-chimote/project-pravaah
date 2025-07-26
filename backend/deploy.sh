@@ -25,7 +25,8 @@ set -euo pipefail  # Exit on error, undefined vars, pipe failures
 
 # GCP Configuration
 PROJECT_ID="stable-sign-454210-i0"
-REGION="asia-south1"
+REGION="asia-south1"  # Cloud Run deployment region
+BUILD_REGION="us-central1"  # Cloud Build region (to avoid quota issues)
 REPOSITORY_NAME="pravaah-services"
 SERVICE_ACCOUNT="pravaah-agent-runner@${PROJECT_ID}.iam.gserviceaccount.com"
 
@@ -171,7 +172,7 @@ build_and_deploy_service() {
     if gcloud builds submit "$service_dir" \
         --tag="$image_tag" \
         --project=$PROJECT_ID \
-        --region=$REGION; then
+        --region=$BUILD_REGION; then
         log_success "Container built: $image_tag"
     else
         log_error "Failed to build container for $service_name"
