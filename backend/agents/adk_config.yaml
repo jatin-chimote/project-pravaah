@@ -1,0 +1,112 @@
+# Google ADK Configuration for Project Pravaah
+# Urban Mobility Operating System - Multi-Agent Configuration
+
+project_id: stable-sign-454210-i0
+region: asia-south1
+location: asia-south1
+
+# Agent Registry Configuration
+agent_registry:
+  type: firestore
+  collection: agent_registry
+  database: "(default)"
+
+# A2A Messaging Configuration
+messaging:
+  type: pubsub
+  topic: pravaah-agent-messages
+  subscription_prefix: pravaah-agent-
+  message_retention: 86400  # 24 hours
+  ack_deadline: 600  # 10 minutes
+
+# Agent Discovery
+discovery:
+  enabled: true
+  heartbeat_interval: 30  # seconds
+  timeout: 120  # seconds
+
+# Logging and Monitoring
+logging:
+  level: INFO
+  structured: true
+  correlation_tracking: true
+
+monitoring:
+  enabled: true
+  metrics_collection: true
+  health_checks: true
+
+# Security
+security:
+  authentication:
+    type: service_account
+    key_file: serviceAccountKey.json
+  authorization:
+    enabled: true
+    rbac: true
+
+# Agent-Specific Configuration
+agents:
+  observer:
+    name: observer-agent
+    capabilities:
+      - traffic_monitoring
+      - telemetry_ingestion
+      - network_state_perception
+    max_instances: 3
+    scaling:
+      auto: true
+      min_instances: 1
+      max_instances: 5
+    
+  simulation:
+    name: simulation-agent
+    capabilities:
+      - congestion_prediction
+      - gridlock_analysis
+      - traffic_modeling
+    max_instances: 2
+    scaling:
+      auto: true
+      min_instances: 1
+      max_instances: 3
+    
+  orchestrator:
+    name: orchestrator-agent
+    capabilities:
+      - strategic_decision_making
+      - agent_coordination
+      - ai_reasoning
+      - intervention_planning
+    max_instances: 1
+    scaling:
+      auto: false
+      min_instances: 1
+      max_instances: 1
+    
+  communications:
+    name: communications-agent
+    capabilities:
+      - notification_delivery
+      - firestore_updates
+      - user_communication
+      - journey_rerouting
+    max_instances: 2
+    scaling:
+      auto: true
+      min_instances: 1
+      max_instances: 4
+
+# Workflow Configuration
+workflows:
+  traffic_management:
+    name: "Traffic Management Pipeline"
+    agents:
+      - observer-agent
+      - simulation-agent
+      - orchestrator-agent
+      - communications-agent
+    trigger:
+      type: schedule
+      interval: 60  # seconds
+    timeout: 300  # 5 minutes

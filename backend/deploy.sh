@@ -136,22 +136,22 @@ build_and_deploy_service() {
     
     log_info "Processing service: $service_name"
     
-    # Determine service directory based on naming convention
+    # Determine service directory and entry point based on naming convention
     case $service_name in
         "api-gateway-service")
             service_dir="api_gateway_service"
             ;;
         "orchestrator-service")
-            service_dir="agents"  # Will need adk_orchestrator_agent.py
+            service_dir="agents"
             ;;
         "simulation-service")
-            service_dir="agents"  # Will need adk_simulation_agent.py
+            service_dir="agents"
             ;;
         "observer-service")
-            service_dir="agents"  # Will need adk_observer_agent.py
+            service_dir="agents"
             ;;
         "communications-service")
-            service_dir="agents"  # Will need adk_communications_agent.py
+            service_dir="agents"
             ;;
         *)
             log_error "Unknown service: $service_name"
@@ -169,6 +169,7 @@ build_and_deploy_service() {
     
     # Build container image using Cloud Build
     log_info "Building container image for $service_name..."
+    
     if gcloud builds submit "$service_dir" \
         --tag="$image_tag" \
         --project=$PROJECT_ID \
@@ -182,19 +183,43 @@ build_and_deploy_service() {
     # Deploy to Cloud Run
     log_info "Deploying $service_name to Cloud Run..."
     
+    # Set service-specific environment variables and commands
+    local service_env_vars="GCP_PROJECT_ID=$PROJECT_ID,ENVIRONMENT=production"
+    local service_cmd=""
+    
+    case $service_name in
+        "orchestrator-service")
+            service_cmd="--command=python,--args=-m,uvicorn,orchestrator_service:app,--host,0.0.0.0,--port,8080"
+            ;;
+        "simulation-service")
+            service_cmd="--command=python,--args=-m,uvicorn,simulation_service:app,--host,0.0.0.0,--port,8080"
+            ;;
+        "observer-service")
+            service_cmd="--command=python,--args=-m,uvicorn,observer_service:app,--host,0.0.0.0,--port,8080"
+            ;;
+        "communications-service")
+            service_cmd="--command=python,--args=-m,uvicorn,communications_service:app,--host,0.0.0.0,--port,8080"
+            ;;
+    esac
+    
     local deploy_args=(
         "--image=$image_tag"
         "--platform=managed"
         "--region=$REGION"
         "--project=$PROJECT_ID"
         "--service-account=$SERVICE_ACCOUNT"
-        "--set-env-vars=GCP_PROJECT_ID=$PROJECT_ID,ENVIRONMENT=production"
+        "--set-env-vars=$service_env_vars"
         "--memory=1Gi"
         "--cpu=1"
         "--concurrency=100"
         "--max-instances=10"
         "--timeout=300"
     )
+    
+    # Add service-specific command if defined
+    if [[ -n "$service_cmd" ]]; then
+        deploy_args+=($service_cmd)
+    fi
     
     # Configure authentication based on service type
     if [[ "$service_name" == "api-gateway-service" ]]; then

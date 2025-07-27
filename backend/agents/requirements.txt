@@ -1,0 +1,47 @@
+# Project Pravaah - Agent Services Dependencies
+# Unified requirements for all agent microservices
+
+# FastAPI and ASGI server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Google Cloud services
+google-cloud-firestore==2.13.1
+google-cloud-pubsub==2.18.4
+google-cloud-aiplatform==1.38.1
+google-cloud-logging==3.8.0
+google-cloud-monitoring==2.16.0
+
+# Firebase Admin SDK
+firebase-admin==6.2.0
+
+# Vertex AI
+vertexai==1.38.1
+
+# Data validation and serialization
+pydantic==2.5.0
+
+# Environment and configuration
+python-dotenv==1.0.0
+
+# Logging and monitoring
+structlog==23.2.0
+
+# HTTP client for inter-service communication
+httpx==0.25.2
+
+# Authentication and security
+google-auth==2.23.4
+google-auth-oauthlib==1.1.0
+google-auth-httplib2==0.1.1
+
+# Async support
+asyncio-mqtt==0.13.0
+
+# Utilities
+uuid==1.30
+python-multipart==0.0.6
+
+# Development and testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
